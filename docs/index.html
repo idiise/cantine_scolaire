@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="RAM-Nutrition" />
+
+
+<title>Cantine Scolaire</title>
+
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="site_libs/datatables-binding-0.27/datatables.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="site_libs/dt-ext-buttons-1.12.1/css/buttons.dataTables.min.css" rel="stylesheet" />
+<script src="site_libs/dt-ext-buttons-1.12.1/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.print.min.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Cantine Scolaire</h1>
+<h4 class="author">RAM-Nutrition</h4>
+<h4 class="date">2023-25-12</h4>
+
+</div>
+
+
+<div id="méthodologie" class="section level2">
+<h2>Méthodologie</h2>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a2863c423b920c021f8b" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a2863c423b920c021f8b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6"],["ADAMAOUA","EAST ","Far north","North","North West ","South West"],[13,6,31,4,25,12],[3688,5206,15479,1079,5764,4919]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Région<\/th>\n      <th>nb_school<\/th>\n      <th>nb_student<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>L’objectif est de sélectionner 50 écoles parmi les 91 réparties dans
+6 régions. Initialement, 15 écoles seront sélectionnées, suivies de 20
+écoles, et enfin 15 autres écoles.</p>
+<p>pour faire le choix des écoles un scoring simple est effectué sur la
+base des critères suivantes:</p>
+<ul>
+<li><p>les écoles ayant un effectifs supérieurs ou égales à la valeur
+médian des effectifs</p></li>
+<li><p>les écoles dont la proximité ou la distance entre l’école et le
+bureau du PAM est à moins de 30 minutes ou entre 30 et 1heure de
+temps</p></li>
+<li><p>les écoles dont l’état de la route pour aller à l’école à pour
+modalité <strong>Good</strong> ou <strong>bonne</strong></p></li>
+<li><p>Les écoles dont l’accessibilité à pour modalité ** Easy** ou
+<strong>Facile</strong></p></li>
+<li><p>Les écoles dont le besoin en priorité est
+<strong>Canteen</strong></p></li>
+</ul>
+<p>En d’autres termes, il s’agit de créer une variable “score global”
+qui correspond à la somme des critères, puis de classer les écoles de
+manière décroissante en fonction de leur score. Les 15 premières écoles
+correspondront au “Lot 1”, les 20 suivantes au “Lot 2”, et les 15 autres
+au “Lot 3”. Si parmi les écoles du Lot 1, il y a une région pour
+laquelle aucune école n’apparaît dans la liste, dans ce cas, un
+ajustement sera effectué en remplaçant les écoles des régions qui ont
+plusieurs écoles dans le “Lot 1” par des écoles qui sont dans la région
+sans école, afin d’avoir des écoles provenant de toutes les régions.</p>
+<p>La syntaxe utilisé est disponible ci-dessous</p>
+</div>
+<div id="syntaxe" class="section level2">
+<h2>Syntaxe</h2>
+<pre class="r"><code># importer la base de donnée
+# dataset &lt;- read.xlsx(&quot;Data/School canteen Needs and Prioritization_ 18.12.2023.xlsx&quot;,sheetName = 1)
+
+# définir les critères
+critere1 &lt;- dataset$Effectif. &gt;= median(dataset$Effectif.)
+critere2 &lt;- dataset$Proximity.of.school.to.WFP.Office %in% c(&quot;Less than 30mins&quot;,&quot;30mins to 1hr&quot;)
+critere3 &lt;- dataset$State.of.roads.to.School == &quot;Good&quot;
+critere4 &lt;- dataset$Accessibility == &quot;Easy&quot;
+critere5 &lt;- dataset$Priority.need == &quot;Canteen&quot;
+
+# créer la variable score globale
+dataset2 &lt;- dataset |&gt; mutate(
+  score_global = critere1 + critere2 + critere3 + critere4 + critere5
+) |&gt; arrange(desc(score_global))
+
+# sélection des 15 écoles du Lot 1
+ecole_selectionne &lt;- head(dataset2,15)
+
+# exporter le fichier 
+# write_xlsx(ecole_selectionne, &quot;Data/ecole.xlsx&quot;)</code></pre>
+</div>
+<div id="classification-finale-et-choix-des-écoles"
+class="section level2">
+<h2>Classification finale et choix des écoles</h2>
+<div id="ecoles-choisies" class="section level3">
+<h3>Ecoles Choisies</h3>
+<p>Comme expliqué dans la méthodologie certaines écoles seront
+remplacées par d’autres écoles d’autres régions absentes dans la
+liste</p>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7957b6935e363cadc698" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7957b6935e363cadc698">{"x":{"filter":"none","vertical":false,"extensions":["Buttons"],"data":[[6,17,19,22,23,43,44,53,81,82,83,88,7,10,13],["ADAMAOUA","EAST ","EAST ","Far north","Far north","Far north","Far north","North","South West","South West","South West","South West","ADAMAOUA","ADAMAOUA","ADAMAOUA"],["Mbéré","Lom et Djerem ","Lom et Djerem ","Diamaré","Diamaré","Mayo-Sava","Mayo-Sava","Bénoué","Fako","Fako","Fako","Fako","Mbéré","Mbéré","Vina "],["Meiganga","Manjou","Manjou","Maroua 1er","Maroua 1er","Mora","Tokombéré","Demsa","Buea","Buea","Buea","Tiko","Meiganga","Meiganga","MBE"],["Babongo","EPP Adinkol","EPPB Manjou","EP TCHOFA BANI","EP YAMDJIDJIM","EP SERADOUMGA","EP MAKALINGAI","EP Tchiffel","GS Bunduma 2","GS great Soppo 1","GS Great soppo 2","GS Muntengene Buea Road","EP Dana ","EP Sabga ","GBPS MBE"],[390,664,963,554,434,1038,793,409,448,500,650,450,274,134,407],["Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy"],["Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good"],["30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","Less than 30mins","Less than 30mins","Less than 30mins","30mins to 1hr","30mins to 1hr","30mins to 1hr","1hr to 1hr:30"],["No","No","No","No","No","No","No","No","No","No","No","No","No","No","No"],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen"],["water point",null,null,"improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves",null,null,null,null,null,null,null,null],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes"],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["LOT 3",null,null,"LOT 1","LOT 1","LOT 1","LOT 1","LOT 2",null,null,null,null,"LOT 3","LOT 2","LOT 2"],["N6°48'24,41376\"","4.649053°N","4.629831°N","10°37'15.1\"N 14°16'18.2\"E","10.575703 14.181339","10.987918,  14.194194",null,null,null,null,null,null,"N6°23'39.88788\"","N6°45'9,47952\"",null],["E14°10'51,65184\"","13.788066°E","13.771074°E",null,null,null,null,null,"LOT 10","LOT 10","LOT 10","LOT 10","E14°18'23.41188\"","E14°11'70012\"",null],[5,5,5,5,5,5,5,5,5,5,5,5,4,4,4]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>N<\/th>\n      <th>Région<\/th>\n      <th>Département<\/th>\n      <th>Arrondissement<\/th>\n      <th>ecole<\/th>\n      <th>Effectif.<\/th>\n      <th>Accessibility<\/th>\n      <th>State.of.roads.to.School<\/th>\n      <th>Proximity.of.school.to.WFP.Office<\/th>\n      <th>School.currently.has.Canteen<\/th>\n      <th>Community.commitment<\/th>\n      <th>Priority.need<\/th>\n      <th>Other..Specify<\/th>\n      <th>Space.is.available.for.building.of.Canteen.<\/th>\n      <th>Space.is.available.for.school.garden.<\/th>\n      <th>Water.supply.Available<\/th>\n      <th>School.has.Garden.or.planned<\/th>\n      <th>LOT..chose.which.lot.the.school.should.be.part.of...<\/th>\n      <th>GPS<\/th>\n      <th>GPS2<\/th>\n      <th>score_global<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Blfrtip","scrollY":300,"columnDefs":[{"className":"dt-right","targets":[0,5,20]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="classification-globale" class="section level3">
+<h3>Classification Globale</h3>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b5f0f01553c8fb2d60f5" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b5f0f01553c8fb2d60f5">{"x":{"filter":"none","vertical":false,"extensions":["Buttons"],"data":[[6,17,19,22,23,43,44,53,81,82,83,88,7,10,13,16,18,20,21,24,26,27,28,29,30,31,32,34,35,39,41,42,45,46,47,49,50,51,52,54,80,84,85,87,91,1,12,25,33,36,37,38,40,48,69,70,71,72,73,74,75,76,77,78,79,86,89,90,2,3,4,5,14,15,57,62,66,67,68,55,56,58,59,60,61,63,64,65,8,9,11],["ADAMAOUA","EAST ","EAST ","Far north","Far north","Far north","Far north","North","South West","South West","South West","South West","ADAMAOUA","ADAMAOUA","ADAMAOUA","EAST ","EAST ","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","Far north","North","North","North","South West","South West","South West","South West","South West","ADAMAOUA","ADAMAOUA","Far north","Far north","Far north","Far north","Far north","Far north","Far north","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","South West","South West","South West","ADAMAOUA","ADAMAOUA","ADAMAOUA","ADAMAOUA","EAST ","EAST ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","North West ","ADAMAOUA","ADAMAOUA","ADAMAOUA"],["Mbéré","Lom et Djerem ","Lom et Djerem ","Diamaré","Diamaré","Mayo-Sava","Mayo-Sava","Bénoué","Fako","Fako","Fako","Fako","Mbéré","Mbéré","Vina ","Lom et Djerem ","Lom et Djerem ","Diamaré","Diamaré","Diamaré","Diamaré","Logone et Chari","Logone et Chari","Logone et Chari","Logone et Chari","Logone et Chari","Mayo-Danay","Mayo-Danay","Mayo-Danay","Mayo-Sava","Mayo-Sava","Mayo-Sava","Mayo-Sava","Mayo-Tsanaga","Mayo-Tsanaga","Mayo-Tsanaga","Mayo-Tsanaga","Bénoué","Bénoué","Bénoué","Fako","Fako","Fako","Fako","Fako","Mbéré","Vina ","Diamaré","Mayo-Danay","Mayo-Danay","Mayo-Danay","Mayo-Danay","Mayo-Sava","Mayo-Tsanaga","Mezam","Mezam","Mezam","Mezam","Mezam","Mezam","Mezam","Mezam","Mezam","Mezam","Mezam","Fako","Fako","Fako","Mbéré","Mbéré","Mbéré","Mbéré","Kadéi","Kadéi","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Donga Mantung","Mbéré","Mbéré","Vina "],["Meiganga","Manjou","Manjou","Maroua 1er","Maroua 1er","Mora","Tokombéré","Demsa","Buea","Buea","Buea","Tiko","Meiganga","Meiganga","MBE","Garoua Boulai","Manjou","Maroua 1er","Maroua 1er","Pette","Pette","Goulfey","Goulfey","Goulfey","Logone Birni","Logone Birni","Yagoua","Yagoua","Yagoua","Kolofata","Kolofata","Mora","Tokombéré","Mokolo","Mokolo","Soulede-Roua","Soulede-Roua","Demsa","Demsa","Demsa","Buea","Limbe","Limbe","Tiko","Tiko","DIR","MBE","Pette","Yagoua","Yagoua","Yagoua","Yagoua","Kolofata","Soulede-Roua","Santa","Santa","Tubah","Tubah","Tubah","Tubah","Bafut","Bafut","Bafut","Bafut","Bafut","Tiko","Tiko","Tiko","DIR","DJOHONG","DJOHONG","DJOHONG","Kentzou","Kentzou","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Nkambe","Meiganga","Meiganga","MBE"],["Babongo","EPP Adinkol","EPPB Manjou","EP TCHOFA BANI","EP YAMDJIDJIM","EP SERADOUMGA","EP MAKALINGAI","EP Tchiffel","GS Bunduma 2","GS great Soppo 1","GS Great soppo 2","GS Muntengene Buea Road","EP Dana ","EP Sabga ","GBPS MBE","EP Gado-Badjere I-A","EPP Boulembe","EP DOULGOU","EP LOUGOL SAMBO","EP DJAFOUWO","EP PETTE","EP AMFARA","EP MARA","EP NGRAN","EP DILGA ARABE","EP KIDAM","EP BAGARA","EP TCHEKE","EP TCHERFEGUE","EP GOUZOUDOU","EP YEGOUA","EP DOULO","EP MOKIO","EP BISKAVAI","EP DIMEO","EP DOUMGAR","EP OUDOUMZARAI","EP Baou","EP Toro","EP Yarmi","GS Bunduma 1","GPS mile 1 Limbe","Inclusive government primary school le.champion","GS misselele","GS tiko town 11","EP BOFORO","EP MAN","EP KORNIRE","EP DJOGOIDI","EP WOUDATA","EP YELEOUNA","EP ZANGYAO","EP GREA","EP CHUMBRELIN","GS BABA II","GS MBU","GS Sabga","GS Finge","GS LIH","GS JOROBURE","GS MBAKONG","GS OBANG","GS NCHUM","GS ACHENI","GS OKWALA","GS Holforth tiko","GS new bonako","GS TIKO TOWN 1","GBPS DIR","EP BEKA-GARI","EP BEZAORO","GBPS DJOHONG","EP Mbile 1B","EP Mbile 2B","GPS KUNGI","GS KONYA ","GS MBIRBOH","GS NGWEMENG ","GS NJAP","GPS BINSHUA ","GPS KUMSA","GPS MOH","GS BIH","GS BINJENG","GS BOJU-NJAP","GS MAYO","GS MBAKA","GS MBIKONG ","EP de Ngam G 2","EP Ngam G 1","EP DE DJETT"],[390,664,963,554,434,1038,793,409,448,500,650,450,274,134,407,1804,731,276,200,499,691,476,686,720,536,643,413,662,412,791,591,651,622,582,584,494,500,257,141,272,190,419,487,399,402,334,203,252,329,163,214,153,260,260,107,57,136,129,98,92,170,206,151,124,100,301,310,363,154,205,180,107,402,642,365,410,377,425,400,223,255,247,318,286,278,286,274,250,586,364,350],["Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Somewhat easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Easy","Somewhat easy","Somewhat easy","Somewhat easy","Somewhat easy","hard","hard","hard","Somewhat easy","Somewhat easy","Somewhat easy","Somewhat easy","Somewhat easy","Somewhat easy","Somewhat easy","Somewhat easy","hard","Easy","Easy","Easy"],["Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Good","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Bad","Good","Good","Good"],["30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","30mins to 1hr","Less than 30mins","Less than 30mins","Less than 30mins","30mins to 1hr","30mins to 1hr","30mins to 1hr","1hr to 1hr:30","More than 2 hrs","1hr to 1hr:30","30mins to 1hr","30mins to 1hr","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","1hr to 1hr:30","30mins to 1hr","1h:30 to 2h","1h:30 to 2h","More than 2 hrs","More than 2 hrs","30mins to 1hr","30mins to 1hr","30mins to 1hr","Less than 30mins","1hr to 1hr:30","1hr to 1hr:30","1hr to 1hr:30","1hr to 1hr:30","More than 2 hrs","1hr to 1hr:30","1h:30 to 2h","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1h:30 to 2h","1hr to 1hr:30","1hr to 1hr:30","1hr to 1hr:30","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","More than 2 hrs","30mins to 1hr","30mins to 1hr","1h:30 to 2h"],["No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No","No"],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Other","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen","Canteen",null,null,null],["water point",null,null,"improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves",null,null,null,null,null,null,null,null,null,"water point","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves",null,null,null,null,null,null,null,null,"water point",null,"improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves","improved cook stoves",null,null,null,null,null,null,null,null,null,null,null,null,null,null,"office for staff",null,null,null,"add another Water point",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes",null,null,"Yes"],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","Yes","Yes","No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","No","No","No","Yes","No","No","No","No","No","No","No","Yes","Yes","Yes","Yes","Yes","Yes","Yes","No","No","No","No","No","No","No","No","No","No","No","No","No","Yes","Yes","Yes","Yes"],["Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes","Yes"],["LOT 3",null,null,"LOT 1","LOT 1","LOT 1","LOT 1","LOT 2",null,null,null,null,"LOT 3","LOT 2","LOT 2",null,null,"LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 2","LOT 2","LOT 2",null,null,null,null,null,"LOT 1","LOT 2","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1","LOT 1",null,null,null,null,null,null,null,null,null,null,null,null,null,null,"LOT 1","LOT 1","LOT 1","LOT 3",null,null,null,null,null,null,null,"LOT 1",null,null,null,null,null,null,null,null,"LOT 1","LOT 2","LOT 2"],["N6°48'24,41376\"","4.649053°N","4.629831°N","10°37'15.1\"N 14°16'18.2\"E","10.575703 14.181339","10.987918,  14.194194",null,null,null,null,null,null,"N6°23'39.88788\"","N6°45'9,47952\"",null,"5.749607°N","4.743176°N",null,"10°29'34.0\"N 14°15'22.9\"E","10.9971882, 14.499378","10°58'29.3\"N E 14°29'39.3252\"",null,null,null,null,null,"10°21'33,50052\"N E15°,14'46,85172","10°21'56.4\"N 15°13'58.9\"E",null,null,null,"11.104351, 14.170874","10.820110, 14.259858",null,null,null,null,null,null,null,null,null,null,null,null,"N6°27'13.84956\"",null,"10.988650, 14.486504",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"N6°20'9.69432\"","N6°44'46.80708\"","N 6°52' 34.7262''","N6°50'14.57304\"","4.16652°N","4.16652°N",null,null,null,null,null,null,null,null,null,null,null,null,null,null,"N6°44'6.4878\"","N6°44'43.32732\"","N7°78'98\"53 "],["E14°10'51,65184\"","13.788066°E","13.771074°E",null,null,null,null,null,"LOT 10","LOT 10","LOT 10","LOT 10","E14°18'23.41188\"","E14°11'70012\"",null,"14.441771°E","13.86431°E",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"LOT 10","LOT 10","LOT 10","LOT 10","LOT 10","E13°18'2.67552\"",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"LOT 10","LOT 10","LOT 10","E13°32'4.83612\"","E14°28'28.227\"","E 14°47' 8.9262''","E14°41'1.12128","14.54361°E","14.54361°E",null,null,null,null,null,null,null,null,null,null,null,null,null,null,"E14°34'13.75536\"","E14°33'39.72132\"","E13°55'22\"44"],[5,5,5,5,5,5,5,5,5,5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,null,null,null]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>N<\/th>\n      <th>Région<\/th>\n      <th>Département<\/th>\n      <th>Arrondissement<\/th>\n      <th>ecole<\/th>\n      <th>Effectif.<\/th>\n      <th>Accessibility<\/th>\n      <th>State.of.roads.to.School<\/th>\n      <th>Proximity.of.school.to.WFP.Office<\/th>\n      <th>School.currently.has.Canteen<\/th>\n      <th>Community.commitment<\/th>\n      <th>Priority.need<\/th>\n      <th>Other..Specify<\/th>\n      <th>Space.is.available.for.building.of.Canteen.<\/th>\n      <th>Space.is.available.for.school.garden.<\/th>\n      <th>Water.supply.Available<\/th>\n      <th>School.has.Garden.or.planned<\/th>\n      <th>LOT..chose.which.lot.the.school.should.be.part.of...<\/th>\n      <th>GPS<\/th>\n      <th>GPS2<\/th>\n      <th>score_global<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"Blfrtip","scrollY":300,"columnDefs":[{"className":"dt-right","targets":[0,5,20]}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

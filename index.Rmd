@@ -1,0 +1,117 @@
+---
+title: "Cantine Scolaire"
+author: "RAM-Nutrition"
+date: "2023-25-12"
+output: 
+  html_document:
+   toc: true
+   toc_float: yes
+   theme: united
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(xlsx)
+library(writexl)
+library(DT)
+
+dataset <- read.xlsx("Data/School canteen Needs and Prioritization_ 18.12.2023.xlsx",sheetName = 1)
+nb_school <- length(unique(dataset$Ecoles.))
+# 91 école sont concernées par l'étude
+nb_student <- sum(dataset$Effectif.)
+# le nombre total d'élève est de 36135
+
+# number of school and student by region
+dataset <- dataset |> rename(
+  ecole = Ecoles.
+)
+nb_sch_stud_by_region <- dataset |> select(Région,ecole) |> 
+  group_by(
+  Région
+) |> summarise(nb_school = n())
+
+nb_stud_by_region <- dataset |> select(Région,Effectif.) |> 
+  group_by(
+    Région
+  ) |> summarise(nb_student = sum(Effectif.))
+
+nb_stu_sch_by_region <- nb_sch_stud_by_region |> left_join(
+  nb_stud_by_region, by = "Région"
+)
+
+```
+
+## Méthodologie
+
+
+```{r, echo=FALSE}
+datatable(nb_stu_sch_by_region)
+```
+
+
+L'objectif est de sélectionner 50 écoles parmi les 91 réparties dans 6 régions. Initialement, 15 écoles seront sélectionnées, suivies de 20 écoles, et enfin 15 autres écoles.
+
+pour faire le choix des écoles un scoring simple est effectué sur la base des critères suivantes:
+
+* les écoles ayant un effectifs supérieurs ou égales à la valeur médian des effectifs
+
+* les écoles dont la proximité ou la distance entre l'école et le bureau du PAM est à moins de 30 minutes ou entre 30 et 1heure de temps
+
+* les écoles dont l'état de la route pour aller à l'école à pour modalité **Good** ou **bonne**
+
+* Les écoles dont l'accessibilité à pour modalité ** Easy** ou **Facile**
+
+* Les écoles dont le besoin en priorité est **Canteen**
+
+En d'autres termes, il s'agit de créer une variable "score global" qui correspond à la somme des critères, puis de classer les écoles de manière décroissante en fonction de leur score. Les 15 premières écoles correspondront au "Lot 1", les 20 suivantes au "Lot 2", et les 15 autres au "Lot 3". Si parmi les écoles du Lot 1, il y a une région pour laquelle aucune école n'apparaît dans la liste, dans ce cas, un ajustement sera effectué en remplaçant les écoles des régions qui ont plusieurs écoles dans le "Lot 1" par des écoles qui sont dans la région sans école, afin d'avoir des écoles provenant de toutes les régions.
+
+La syntaxe utilisé est disponible ci-dessous
+
+## Syntaxe
+```{r }
+# importer la base de donnée
+# dataset <- read.xlsx("Data/School canteen Needs and Prioritization_ 18.12.2023.xlsx",sheetName = 1)
+
+# définir les critères
+critere1 <- dataset$Effectif. >= median(dataset$Effectif.)
+critere2 <- dataset$Proximity.of.school.to.WFP.Office %in% c("Less than 30mins","30mins to 1hr")
+critere3 <- dataset$State.of.roads.to.School == "Good"
+critere4 <- dataset$Accessibility == "Easy"
+critere5 <- dataset$Priority.need == "Canteen"
+
+# créer la variable score globale
+dataset2 <- dataset |> mutate(
+  score_global = critere1 + critere2 + critere3 + critere4 + critere5
+) |> arrange(desc(score_global))
+
+# sélection des 15 écoles du Lot 1
+ecole_selectionne <- head(dataset2,15)
+
+# exporter le fichier 
+# write_xlsx(ecole_selectionne, "Data/ecole.xlsx")
+
+```
+
+## Classification finale et choix des écoles
+### Ecoles Choisies
+Comme expliqué dans la méthodologie certaines écoles seront remplacées par d'autres écoles d'autres régions absentes dans la liste
+```{r , echo=FALSE}
+datatable({ecole_selectionne},
+          rownames = FALSE, extensions = c("Buttons"), options=list(dom = 'Blfrtip',
+scrollY = 300
+                                                                 # scroller = TRUE,
+                                                                 # buttons=c("csv","excel"),
+          ))
+```
+### Classification Globale
+
+```{r,echo=FALSE}
+datatable({dataset2},
+          rownames = FALSE, extensions = c("Buttons"), options=list(dom = 'Blfrtip',
+scrollY = 300
+                                                                 # scroller = TRUE,
+                                                                 # buttons=c("csv","excel"),
+          ))
+```
+
